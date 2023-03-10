@@ -1,0 +1,307 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&family=Shrikhand&display=swap");
+body {
+  font-family: "Roboto", sans-serif;
+  color: black;
+  padding: 0px;
+  margin: 0px;
+}
+
+h1 {
+  font-size: larger;
+  font-weight: bold;
+  color: black;
+  margin: 0.5rem;
+}
+
+h2 {
+  font-size: x-large;
+  color: black;
+  margin: 0.5rem;
+}
+
+h3 {
+  font-size: large;
+  font-weight: bold;
+  color: black;
+  margin: 0.1rem;
+}
+
+h4 {
+  font-size: large;
+  font-weight: lighter;
+  color: black;
+  margin: 0.1rem;
+}
+
+p {
+  font-size: large;
+  font-weight: normal;
+  margin: 0px;
+}
+
+.explore_button {
+  display: inline-block;
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+  width: 50%;
+  background: linear-gradient(#ff79da, #9356dc);
+  color: white;
+  font-size: small;
+  border-radius: 30px;
+  padding: 15px 30px;
+  margin: 2rem 0.2rem;
+  box-shadow: 10px 10px 10px rgba(126, 126, 126, 0.3);
+}
+
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button .order_button {
+  display: block;
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+  width: 40%;
+  background: linear-gradient(#ff79da, #9356dc);
+  color: white;
+  font-size: small;
+  border-radius: 30px;
+  padding: 15px 30px;
+  margin: 2rem 0.2rem;
+  box-shadow: 10px 10px 10px rgba(126, 126, 126, 0.3);
+  text-align: center;
+}
+
+
+.button_home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border: none;
+  cursor: pointer;
+  background-color: #cbcbcb;
+  height: 2rem;
+  width: 2rem;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+.button_home i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  color: #000000;
+  text-decoration: none;
+}
+
+
+
+
+.button_menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border: none;
+  cursor: pointer;
+  background-color: #cbcbcb;
+  height: 2rem;
+  width: 2rem;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+.button_menu i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #f6f6f6;
+  color: #000000;
+  text-decoration: none;
+}
+
+.header_home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+}
+.header_home a {
+  margin: 1rem;
+}
+
+
+
+.header_menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+}
+.header_menu a {
+  text-decoration: none;
+}
+.header_menu .logo {
+  margin: 1rem 0;
+}
+.header_menu i {
+  display: block;
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  color: black;
+}
+
+
+.footer {
+  background-color: #343434;
+  padding: 0.5rem;
+}
+.footer .footer__wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.footer h1 {
+  font-family: "Shrikhand", cursive;
+  color: white;
+  padding: 1rem;
+  margin: 0rem;
+}
+.footer a {
+  text-decoration: none;
+  color: white;
+}
+.footer ul {
+  list-style-type: none;
+  padding: 0px;
+}
+.footer li {
+  margin: 1rem;
+}
+
+
+.courses_main {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.courses {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0rem;
+}
+.courses h2 {
+  font-weight: lighter;
+  font-size: large;
+  margin: 1rem;
+}
+
+
+
+.courses__item {
+  display: flex;
+  border-radius: 15px;
+  background-color: white;
+  margin: 0.5rem;
+  overflow: hidden;
+  width: 95%;
+  box-shadow: 10px 10px 10px rgba(126, 126, 126, 0.3);
+}
+.courses__item__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  transition: width 500ms;
+  padding: 0.5rem;
+}
+.courses__item__content h3 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.courses__item__content__description_and_price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.courses__item__content__description_and_price h4 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.courses__item__content__description_and_price p {
+  margin: 0 1rem;
+}
+.courses__item__checked {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #99e2d0;
+  border-radius: 0px 15px 15px 0px;
+  overflow: hidden;
+  width: 0%;
+  transition: width 500ms;
+}
+.courses__item__checked i {
+  color: white;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(-1turn);
+  transition: transform 400ms ease-in-out;
+}
+
+
+
+.restaurant__picture {
+  position: absolute;
+  object-fit: cover;
+  width: 100%;
+  height: 12rem;
+}
+
+
+.menu {
+  margin-top: 10rem;
+  background-color: #f6f6f6;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 2rem;
+  border-radius: 30px;
+}
+
+.menu__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 2rem;
+}
+.menu__title h2 {
+  display: flex;
+  font-family: "Shrikhand", cursive;
+  font-size: 1.5rem;
+  font-weight: normal;
+  margin: 1rem;
+}
+
+/*# sourceMappingURL=menus.css.map */
