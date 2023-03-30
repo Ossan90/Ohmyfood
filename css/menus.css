@@ -61,7 +61,7 @@ p {
   justify-content: center;
 }
 
-.button .order_button {
+.button .commande {
   display: block;
   text-decoration: none;
   position: relative;
@@ -75,6 +75,13 @@ p {
   margin: 2rem 0.2rem;
   box-shadow: 10px 10px 10px rgba(126, 126, 126, 0.3);
   text-align: center;
+}
+
+
+.commande:hover {
+  background: linear-gradient(#ecb1db, #ab8ad4);
+  opacity: 0.8;
+  box-shadow: 15px 15px 15px rgba(126, 126, 126, 1);
 }
 
 
@@ -105,6 +112,65 @@ p {
   color: #000000;
   text-decoration: none;
 }
+
+.entrees {
+  animation: apparition_menu 1000ms forwards 200ms;
+}
+.plats {
+  animation: apparition_menu 1000ms forwards 400ms;
+}
+.desserts {
+  animation: apparition_menu 1000ms forwards 800ms;
+}
+
+@keyframes apparition_menu {
+  0% {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+
+
+
+
+.choix__checked {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #99e2d0;
+  border-radius: 0px 15px 15px 0px;
+  overflow: hidden;
+  width: 0%;
+  transition: width 500ms;
+}
+
+
+.choix__checked i {
+  color: white;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(600deg);
+  transition: transform 400ms ease-in-out;
+}
+
+
+
+.choix:hover .choix__content {
+  width: 80%;
+}
+.choix:hover .choix__checked {
+  width: 20%;
+}
+.choix:hover .choix__checked i {
+  transform: rotate(0turn);
+}
+
+
 
 
 
@@ -197,7 +263,7 @@ p {
 }
 
 
-.courses_main {
+.courses_1 {
   display: flex;
   flex-direction: column;
 }
@@ -214,9 +280,36 @@ p {
   margin: 1rem;
 }
 
+.courses h2::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 2.5rem;
+  top: 2.6rem;
+  left: 1rem;
+  background: #99e2d0;
+}
 
 
-.courses__item {
+
+.fa-solid{
+  opacity: 0;
+  transition: 500ms ease-in-out;
+  background-image: linear-gradient( #ff79da, #9356dc);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+
+.button_menu:hover .fa-solid {
+  opacity: 1;
+}
+
+
+
+
+.choix {
   display: flex;
   border-radius: 15px;
   background-color: white;
@@ -225,7 +318,7 @@ p {
   width: 95%;
   box-shadow: 10px 10px 10px rgba(126, 126, 126, 0.3);
 }
-.courses__item__content {
+.choix__content {
   display: flex;
   flex-direction: column;
   justify-content: stretch;
@@ -233,47 +326,31 @@ p {
   text-overflow: ellipsis;
   width: 100%;
   transition: width 500ms;
-  padding: 0.5rem;
+  padding: 1.2rem;
 }
-.courses__item__content h3 {
+.choix__content h3 {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
-.courses__item__content__description_and_price {
+.choix__content__description_and_price {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.courses__item__content__description_and_price h4 {
+.choix__content__description_and_price h4 {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
-.courses__item__content__description_and_price p {
+.choix__content__description_and_price p {
   margin: 0 1rem;
 }
-.courses__item__checked {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #99e2d0;
-  border-radius: 0px 15px 15px 0px;
-  overflow: hidden;
-  width: 0%;
-  transition: width 500ms;
-}
-.courses__item__checked i {
-  color: white;
-  justify-content: center;
-  align-items: center;
-  transform: rotate(-1turn);
-  transition: transform 400ms ease-in-out;
-}
 
 
 
-.restaurant__picture {
+
+.restaurantImg {
   position: absolute;
   object-fit: cover;
   width: 100%;
@@ -290,13 +367,14 @@ p {
   border-radius: 30px;
 }
 
-.menu__title {
+.menu__titre {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-right: 2rem;
 }
-.menu__title h2 {
+
+.menu__titre h2 {
   display: flex;
   font-family: "Shrikhand", cursive;
   font-size: 1.5rem;
@@ -304,4 +382,66 @@ p {
   margin: 1rem;
 }
 
-/*# sourceMappingURL=menus.css.map */
+
+
+
+@media screen and (min-width: 850px) {
+  .explore_button {
+    width: 30%;
+  }
+
+  .courses_1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+    justify-content: center;
+  }
+
+  ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-right: 2rem;
+  }
+
+  .footer__wrapper{
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+  }
+
+  .menu__titre {
+    justify-content: center;
+  }
+
+
+}
+
+
+@media screen and (min-width: 1000px) {
+  .courses {
+    margin: 0rem 1rem;
+    width: 500px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .restaurantImg {
+    height: 20rem;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .menu {
+    margin-top: 20rem;
+    border-radius: 0px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .menu__titre h2 {
+    font-size: xx-large;
+    margin: 2rem;
+  }
+}
