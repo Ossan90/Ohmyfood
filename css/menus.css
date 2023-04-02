@@ -414,32 +414,22 @@ p {
   .menu__titre {
     justify-content: center;
   }
-
-
-}
-
+} 
 
 @media screen and (min-width: 1000px) {
+
   .courses {
     margin: 0rem 1rem;
     width: 500px;
   }
-}
-
-@media screen and (min-width: 1000px) {
   .restaurantImg {
     height: 20rem;
   }
-}
-
-@media screen and (min-width: 1000px) {
   .menu {
-    margin-top: 20rem;
-    border-radius: 0px;
+    margin: 17rem 7rem 0rem 7rem;
+    border-radius: 50px;
   }
-}
 
-@media screen and (min-width: 1000px) {
   .menu__titre h2 {
     font-size: xx-large;
     margin: 2rem;
