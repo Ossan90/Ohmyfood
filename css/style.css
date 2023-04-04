@@ -148,7 +148,7 @@ p {
   left: 0;
   height: 100%;
   width: 100%;
-  animation: disparition 10ms ease-in-out 20ms forwards;
+  animation: disparition 1500ms ease-in-out 2000ms forwards;
 }
 
 @keyframes disparition {
