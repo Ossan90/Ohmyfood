@@ -21,11 +21,26 @@ server. No build step, no dependencies, no API keys.
 4. The result is written to `data/videos.js` (loaded by the page) and
    `data/videos.json` (same payload for other consumers).
 
+## AI edition (`ai/`)
+
+`ai/index.html` serves the same site restricted to videos about artificial
+intelligence, from `data/videos-ai.js`. The sidebar links the two editions.
+
+- A video is about AI when its YouTube title, its channel, or one of the HN
+  headlines it was submitted under matches the terms in `scripts/ai_filter.py`
+  (acronyms such as AI, LLM and GPT are matched as whole, case-sensitive words).
+- The bar is lower than the general edition (5 mentions, 3 years, 3 users),
+  because most AI videos are recent.
+- The keyword matches were reviewed by hand: `ALWAYS` and `NEVER` in
+  `ai_filter.py` hold the overrides, each with a one-line reason.
+
 ## Rebuilding the data
 
 ```sh
 python3 scripts/harvest_hn.py /path/to/hn-cache          # ~15 min first run, incremental afterwards
 python3 scripts/build_data.py /path/to/hn-cache /path/to/oembed-cache
+python3 scripts/build_data.py /path/to/hn-cache /path/to/oembed-cache \
+    --topic ai --min-mentions 5 --min-years 3 --min-users 3   # AI edition
 ```
 
 Python 3.9+ standard library only.

@@ -14,6 +14,8 @@
   }
 
   const VIDEOS = DATA.videos;
+  const IS_AI = DATA.topic === "ai";
+  const SITE = IS_AI ? "Kazak AI" : "Kazak";
   const BY_ID = new Map(VIDEOS.map((v) => [v.id, v]));
   const BY_CHANNEL = new Map();
   for (const v of VIDEOS) {
@@ -291,7 +293,9 @@
     main.innerHTML = `
       <div class="prose">
         <h1>How this catalogue is built</h1>
-        <p>Kazak is a YouTube-style front end restricted to one thing: videos that Hacker News has recommended again and again over the years. Nothing here was hand-picked. Every video earned its place by being linked repeatedly, by different people, in different years.</p>
+        <p>${IS_AI
+          ? "Kazak AI is a YouTube-style front end restricted to one thing: videos about artificial intelligence that Hacker News has recommended again and again over the years."
+          : "Kazak is a YouTube-style front end restricted to one thing: videos that Hacker News has recommended again and again over the years."} Nothing here was hand-picked. Every video earned its place by being linked repeatedly, by different people, in different years.</p>
         <h2>Source data</h2>
         <p>The whole public history of Hacker News was crawled through the <a href="https://hn.algolia.com/api" target="_blank" rel="noopener noreferrer">HN Algolia search API</a>: every story whose URL points at YouTube and every comment containing a YouTube link, from ${esc(src.from ? month(src.from) : "the start")} to ${esc(src.to ? month(src.to) : "now")}. The crawl is sliced by date so that Algolia's 1,000-hit cap never truncates a window.</p>
         <table>
@@ -299,7 +303,9 @@
           <tr><th>Comments linking a YouTube video</th><td>${esc((src.comments || 0).toLocaleString("en"))}</td></tr>
           <tr><th>Distinct videos seen</th><td>${esc((src.distinctVideos || 0).toLocaleString("en"))}</td></tr>
           <tr><th>Videos meeting the bar</th><td>${esc((src.qualifying || 0).toLocaleString("en"))}</td></tr>
-          <tr><th>Still available on YouTube</th><td>${esc((src.available || 0).toLocaleString("en"))}</td></tr>
+          ${IS_AI
+            ? `<tr><th>Still available and about AI</th><td>${esc((src.onTopic || 0).toLocaleString("en"))}</td></tr>`
+            : `<tr><th>Still available on YouTube</th><td>${esc((src.available || 0).toLocaleString("en"))}</td></tr>`}
           <tr><th>Data built</th><td>${esc(built)}</td></tr>
         </table>
         <h2>The bar</h2>
@@ -310,6 +316,9 @@
           <li>by at least <strong>${esc(crit.minUsers)}</strong> different HN users.</li>
         </ul>
         <p>Each candidate is then checked against YouTube's oEmbed endpoint. Videos that are deleted, private or otherwise unavailable are dropped, and the title and channel shown here come from YouTube, not from HN headlines.</p>
+        ${IS_AI ? `<h2>What counts as AI</h2>
+        <p>A video is kept when its YouTube title, or one of the Hacker News headlines it was submitted under, names an AI subject: artificial intelligence, machine learning, neural networks, language models, reinforcement learning, AI labs and researchers such as DeepMind, OpenAI or Karpathy, and similar terms. Acronyms such as AI, LLM and GPT are matched as whole words only. A few channels that publish nothing but AI are kept whole. The resulting list was reviewed by hand, and the false positives that keywords let through were removed.</p>
+        <p>The bar is lower than on the <a href="../">general catalogue</a>, because most AI videos are recent and have had fewer years to be recommended again.</p>` : ""}
         <h2>What the numbers mean</h2>
         <ul>
           <li><strong>Times linked on HN</strong>: distinct submissions plus distinct comments containing the video.</li>
@@ -330,7 +339,7 @@
   }
 
   // ---------- chrome ----------
-  function setTitle(t) { document.title = (t ? t + " — " : "") + "Kazak"; }
+  function setTitle(t) { document.title = (t ? t + " — " : "") + SITE; }
   function setNav(key) {
     document.querySelectorAll(".nav-item").forEach((a) => a.classList.toggle("is-active", a.dataset.nav === key));
   }
@@ -340,6 +349,11 @@
       <a class="nav-item" href="${channelHref(c.name)}" data-nav="channel:${esc(channelKey(c.name))}" title="${esc(c.name)}">
         <span class="avatar" aria-hidden="true">${esc(initial(c.name))}</span><span>${esc(c.name)}</span>
       </a>`).join("");
+    const sw = document.getElementById("topic-switch");
+    if (sw) {
+      sw.href = IS_AI ? "../" : "ai/";
+      sw.querySelector("span").textContent = IS_AI ? "All topics" : "AI only";
+    }
     document.getElementById("sidebar-foot").textContent =
       `${VIDEOS.length.toLocaleString("en")} videos from ${CHANNELS.length.toLocaleString("en")} channels. Data built ${DATA.builtAt ? day(DATA.builtAt) : ""}.`;
   }
